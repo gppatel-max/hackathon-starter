@@ -1,5 +1,5 @@
 import React from 'react';
-
+import React from './component/profile/profile'
 import {Link, link} from 'react-router-dom'
 
 function Navigation(props) {

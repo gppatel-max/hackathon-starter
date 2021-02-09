@@ -1,5 +1,5 @@
 import React from "react";
-import './app/.css';
+// import './app.css';
 import Menu from "../components/menu/Menu";
 import Messages from "../components/messages/Messages"
 import { userIsAuthenticated } from "../redux/HOCs";
@@ -17,4 +17,4 @@ class Profile extends React.Component {
   }
 }
 
-export default userIsAuthenticated(Profile);
+export default userIsAuthenticated(Profile,)

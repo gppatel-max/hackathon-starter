@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation/Navigation";
+import InputField from "./components/inputfield/InputField";
 
 
 class App extends React.Component {
@@ -26,6 +27,12 @@ class App extends React.Component {
           exact
           path="*"
           component={NotFound}
+
+        />
+        <Route
+        exact
+        path="/inputField/:inputField"
+        component={InputField}
         />
       </Switch>
     );
