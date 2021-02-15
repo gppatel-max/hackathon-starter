@@ -3,8 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-import Navigation from "./components/Navigation/Navigation";
-import InputField from "./components/inputfield/InputField";
 
 
 class App extends React.Component {
@@ -12,7 +10,7 @@ class App extends React.Component {
     return (
       
       <Switch>
-        <Navigation/>
+        
         <Route
           exact
           path="/"
@@ -29,11 +27,7 @@ class App extends React.Component {
           component={NotFound}
 
         />
-        <Route
-        exact
-        path="/inputField/:inputField"
-        component={InputField}
-        />
+        
       </Switch>
     );
   }

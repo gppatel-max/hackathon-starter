@@ -1,5 +1,7 @@
 import React from "react";
 import { withAsyncAction } from "../../redux/HOCs";
+import { getPicture } from "../../redux/stateReducers/profile";
+
 
 class Messages extends React.Component {
   constructor(props) {
@@ -9,7 +11,8 @@ class Messages extends React.Component {
       messages: [],
       message: '',
       count: 0,
-      image: ''
+      image: '',
+      
     }
   }
 
@@ -26,6 +29,15 @@ class Messages extends React.Component {
       })
     })
   }
+  grabAPicture =()=>{
+    this.props.getPicture(this.props.username)
+    .then((res)=>{
+      console.log(res)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  
 
   newMessageHandler = () => {
     let text = this.state.message;
@@ -43,9 +55,9 @@ class Messages extends React.Component {
     data[event.target.name] = event.target.value;   
 
     this.setState(data);
+    
   }
-
-  render() {
+  
     let display = (<div>No Messages Found</div>)
     if (this.state.messages) {
       display = this.state.messages.map((value) => {
@@ -63,6 +75,7 @@ class Messages extends React.Component {
         <div className="NewMessage">
           <input name="message" onChange={this.handleChange} value={this.state.message}/>
           <button onClick={this.newMessageHandler}> Send Message </button>
+          <img src="cinqueterre.jpg" class="rounded" alt="Cinque Terre" width="304" height="236"/>
         </div>
       </div>
     );
