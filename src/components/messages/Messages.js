@@ -12,9 +12,21 @@ class Messages extends React.Component {
       message: '',
       count: 0,
       image: '',
+      addedLike:'',
+      removedLike:'',
       
     }
   }
+addedLike = (messageId) =>{
+  this.props.addedLike(messageId).then(() => {
+    this.fetchMessages();
+  })
+}
+removedLike = (likeID) =>{
+  this.props.removedLike(likeID).then(() =>{
+    this.fetchMessages();
+  })
+}
 
   componentDidMount() {
     this.fetchMessages();
@@ -29,14 +41,14 @@ class Messages extends React.Component {
       })
     })
   }
-  grabAPicture =()=>{
-    this.props.getPicture(this.props.username)
-    .then((res)=>{
-      console.log(res)
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
+  // grabAPicture =()=>{
+  //   this.props.getPicture(this.props.username)
+  //   .then((res)=>{
+  //     console.log(res)
+  //   })
+  //   .catch((err)=>{
+  //     console.log(err)
+  //   })
   
 
   newMessageHandler = () => {
@@ -61,9 +73,16 @@ class Messages extends React.Component {
     let display = (<div>No Messages Found</div>)
     if (this.state.messages) {
       display = this.state.messages.map((value) => {
+        
         return (
-          <li key={value.id}>{value.text}</li>
+          <li key={value.id}>{value.text}
+          <button onClick ={ () =>this.addedLike(value.id)}>Like </button>
+          <button onClick = {() =>this.removedLike(value.liks[0].id)}>do not like</button>
+          </li>
         )
+
+
+
       })
     }
 
